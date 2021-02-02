@@ -14,7 +14,23 @@ export default () => {
         const password = loginForm['login-password'].value;
         console.log(email, password)
         auth.authEmailPassword(email, password);
+        location.reload();
+        window.location.href = '#/';
     });
+
+    const loginGoogle = divElement.querySelector('#login-google')
+    loginGoogle.addEventListener('click', (e) => {
+        e.preventDefault();
+        auth.authGoogle();
+        console.log('loged google')
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                window.location.href = '#/'
+            } else {
+                console.log('hubo un problema en el logeo')
+            }
+        })
+    })
 
     return divElement;
 
