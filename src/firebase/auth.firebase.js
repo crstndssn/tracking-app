@@ -5,7 +5,10 @@ export default class Authentication {
         firebase.auth()
             .createUserWithEmailAndPassword(email, password)
             .then((result) => {
-                console.log(loged)
+                console.log(result)
+                result.user.updateProfile({
+                    displayName: name
+                })
             })
             .catch (error => {
                 console.log(error)
@@ -15,8 +18,7 @@ export default class Authentication {
     // Sign Up Google
     signUpGoogle() {
         const provider = new firebase.auth.GoogleAuthProvider();
-        firebase
-            .auth()
+        firebase.auth()
             .signInWithPopup(provider)
             .then(result => {
                 console.log(result)
@@ -32,12 +34,13 @@ export default class Authentication {
         firebase.auth()
             .signInWithEmailAndPassword(email, password)
             .then(result => {
-                console.log('loged')
+                console.log(result)
             })
             .catch(error => {
-                console.log(error)
+                console.log(error.message)
             })
     }
+
 
     // Login Google
     authGoogle() {

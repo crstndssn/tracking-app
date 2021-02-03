@@ -12,10 +12,9 @@ export default () => {
         e.preventDefault();
         const email = loginForm['login-email'].value;
         const password = loginForm['login-password'].value;
-        console.log(email, password)
         auth.authEmailPassword(email, password);
         location.reload();
-        window.location.href = '#/';
+        window.location.href = '#/tasks';
     });
 
     const loginGoogle = divElement.querySelector('#login-google')
@@ -25,7 +24,7 @@ export default () => {
         console.log('loged google')
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                window.location.href = '#/'
+                window.location.href = '#/tasks'
             } else {
                 console.log('hubo un problema en el logeo')
             }

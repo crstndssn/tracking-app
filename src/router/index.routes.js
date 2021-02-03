@@ -15,6 +15,9 @@ const router = async (route) => {
         case '#/signup':
             return content.appendChild(pages.signup());
         
+        case '#/tasks':
+            return content.appendChild(await pages.tasks());
+        
         case '#/posts':
             return content.appendChild(await pages.posts());
         
