@@ -12,8 +12,9 @@ export default () => {
         e.preventDefault();
         const email = loginForm['login-email'].value;
         const password = loginForm['login-password'].value;
+        console.log(email, password)
         auth.authEmailPassword(email, password);
-        location.reload();
+        // location.reload();
         window.location.href = '#/tasks';
     });
 

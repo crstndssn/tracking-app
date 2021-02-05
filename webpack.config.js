@@ -9,6 +9,9 @@ module.exports = {
         filename: 'main.js',
         publicPath: publicPath,
     },
+    performance: {
+        hints: process.env.NODE_ENV === 'production' ? "warning" : false
+      },
     module: {
         rules: [
             {

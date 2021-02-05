@@ -1,9 +1,10 @@
 export default class Task {
 
-    createTask(task) {
+    createTask(uid, task) {
         return firebase.firestore()
             .collection('tasks')
             .add({
+                autor: uid,
                 task: task,
                 date: firebase.firestore.FieldValue.serverTimestamp()
             })
@@ -11,13 +12,15 @@ export default class Task {
                 console.log(`Id task => ${refDoc.id}`);
             })
             .catch(error => {
-                console.log(`Error creando posts ${error.message}`);
+                console.log(`Error creando po sts ${error.message}`);
             })
     }
 
-    getTasks(tasksContainer) {
+    getTasks(tasksContainer, userid) {
          firebase.firestore()
             .collection('tasks')
+            .orderBy('date', 'asc')
+            .where('autor', '==', userid)
             .onSnapshot(querySnapshot => {
                 tasksContainer.innerHTML = '';
                 querySnapshot.forEach(task => {
@@ -33,7 +36,6 @@ export default class Task {
                             this.deleteTask(btn.dataset.id)
                         })   
                     })
-                    console.log(btnsDelete)
                 })
             })  
     }
