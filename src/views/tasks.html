@@ -1,8 +1,16 @@
-<input type="text" id="input-task" class="bg-gray-200 p-4 my-2 w-full rounded-md" placeholder="Add your task and press enter"
+<input type="text" id="input-task" class="bg-gray-200 p-3 my-2 w-full rounded-md" placeholder="Add your task and press enter"
     autocomplete="off">
 
+<!-- All tasks -->
+<div id="tasks-container" class="display flex flex-col"></div>
 
-<div id="tasks-container" class="display flex flex-col">
-
+<!-- taks done -->
+<div class="flex justify-center">
+   <button id="showCompletedTasks" class="bg-gray-300 text-white p-1 my-4 text-xs rounded-sm focus:outline-none">Show Completed Tasks</button> 
 </div>
+
+<div id="task-done-container" style="display: flex;" class="display flex flex-col">  
+</div>
+
+
 

@@ -15,12 +15,13 @@ export default () => {
             const task = taskInput.value;
             taskInput.value = ''
             firebase.auth().onAuthStateChanged((user) => {
-                if(user){
-                    tasks.createTask(user.uid, task);
+                if (user) {
+                    const state = true;
+                    tasks.createTask(user.uid, task, state);
                 } else {
                     console.log('error')
                 }
-                
+
             })
         }
     })
@@ -30,20 +31,40 @@ export default () => {
     const tasksContainer = divElement.querySelector('#tasks-container');
 
     firebase.auth().onAuthStateChanged((user) => {
-        if(user){
+        if (user) {
             console.log(user.uid)
-           tasks.getTasks(tasksContainer, user.uid)
-           
+            tasks.getTasks(tasksContainer, user.uid)
+
         } else {
             console.log('error')
         }
     })
 
+    // get all tasks
+    const btnAllTasks = divElement.querySelector('#showCompletedTasks')
+    let tasksContainerDone = divElement.querySelector('#task-done-container')
 
-    
-    
+    let displayState = tasksContainerDone.style.display;
 
-
+    btnAllTasks.addEventListener('click', (e) => {
+        
+        console.log(displayState)
+        if(displayState == 'flex') {
+            btnAllTasks.innerHTML = 'Hide Completed Tasks'
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user) {
+                    tasks.getTasksDone(tasksContainerDone, user.uid)
+                } else {
+                    console.log('error')
+                }
+            })  
+            displayState = 'none';
+        } else {
+            btnAllTasks.innerHTML = 'Show Completed Tasks'
+            tasksContainerDone.innerHTML = ''
+            displayState = 'flex';
+        }
+    })
 
 
     return divElement;
