@@ -7,6 +7,19 @@ export default () => {
     const divElement = document.createElement('div');
     divElement.innerHTML = view;
 
+    const email = divElement.querySelector('#login-email');
+
+    email.addEventListener('keyup', (e) => {
+        e.preventDefault()
+        console.log(email.value)
+        const valor = email.value;
+        // if (email )) {
+        //     console.log('false')
+        // } else {
+        //     console.log('true')
+        // }
+    })
+
     const loginForm = divElement.querySelector('#form-login')
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();

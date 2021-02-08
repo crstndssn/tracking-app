@@ -12,7 +12,7 @@ const router = async (route) => {
         case '#/':
             return content.appendChild(pages.home());
         
-        case '#/login': 
+        case '#/login':
             return content.appendChild(pages.login());
 
         case '#/signup':
@@ -22,13 +22,10 @@ const router = async (route) => {
             return content.appendChild(await pages.tasks());
         
         case '#/money':
-            return content.appendChild(await pages.tasks());
+            return content.appendChild(await pages.money());
         
         case '#/goals':
-            return content.appendChild(await pages.tasks());
-        
-        case '#/tasks':
-            return content.appendChild(await pages.tasks());
+            return content.appendChild(await pages.goals());
         
         case '#/posts':
             return content.appendChild(await pages.posts());
