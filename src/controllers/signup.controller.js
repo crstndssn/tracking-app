@@ -9,11 +9,11 @@ export default () => {
 
     const signupForm = divElement.querySelector('#form-signup');
     signupForm.addEventListener('submit', (e) => {
-
         const name = signupForm['signup-name'].value;
         const email = signupForm['signup-email'].value;
         const password = signupForm['signup-password'].value;
-        auth.signUpEmailAndPassword(name, email, password);
+        const modalContainer = divElement.querySelector('.modal-container');
+        auth.signUpEmailAndPassword(name, email, password, modalContainer);
         location.reload();
         window.location.href = '#/';
 

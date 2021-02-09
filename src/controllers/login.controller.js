@@ -1,5 +1,7 @@
 import view from '../views/login.html'
+import viewTasks from '../views/tasks.html'
 import Authentication from '../firebase/auth.firebase'
+import Modal from '../firebase/modal.firebase'
 
 const auth = new Authentication();
 
@@ -7,34 +9,41 @@ export default () => {
     const divElement = document.createElement('div');
     divElement.innerHTML = view;
 
-    const email = divElement.querySelector('#login-email');
-
-    email.addEventListener('keyup', (e) => {
-        e.preventDefault()
-        console.log(email.value)
-        const valor = email.value;
-        // if (email )) {
-        //     console.log('false')
-        // } else {
-        //     console.log('true')
-        // }
-    })
-
+    const modalContainer = divElement.querySelector('.modal-container')
+     
     const loginForm = divElement.querySelector('#form-login')
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const email = loginForm['login-email'].value;
         const password = loginForm['login-password'].value;
-        console.log(email, password)
-        auth.authEmailPassword(email, password);
-        // location.reload();
+        console.log(email, password, modalContainer)
+        auth.authEmailPassword(email, password, modalContainer);
         window.location.href = '#/tasks';
+       
+        console.log(viewTasks)
+
+        var modalContainerTasks = document.createElement('div');
+        modalContainerTasks.innerHTML += viewTasks;
+        modalContainerTasks.querySelector('.modal-container')
+        console.log(modalContainerTasks)
+
+        let messageWecome = 'Welcome'
+
+        console.log(Modal.successModal())
+
+        debugger
+
+        // let messageWecomeTemplate = Modal.successModal(messageWecome)
+
+        modalContainerTasks.innerHTML += messageWecomeTemplate
+        
+        debugger
     });
 
     const loginGoogle = divElement.querySelector('#login-google')
     loginGoogle.addEventListener('click', (e) => {
         e.preventDefault();
-        auth.authGoogle();
+        auth.authGoogle(modalContainer);
         console.log('loged google')
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
