@@ -1,9 +1,10 @@
 export default class Modal {
 
 
-    successModalTemplate(message, modalContainer) {
+    successModal(message, modalContainer) {
         modalContainer.innerHTML = '';
-        
+        let modal = this.successModalTemplate(message)
+        modalContainer.innerHTML += modal;
     }
 
     successModalTemplate(message) {
@@ -14,6 +15,14 @@ export default class Modal {
             </p>
         </div>
         `;
+    }
+
+    errorModal(message, modalContainer) {
+        let modal = this.errorModalTemplate(message)
+        modalContainer.innerHTML += modal;
+        setTimeout(() => {
+            modalContainer.innerHTML = '';
+        }, 4000)
     }
 
     errorModalTemplate(message) {
