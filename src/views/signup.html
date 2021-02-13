@@ -1,17 +1,31 @@
 <div id="modal-signup" class="modal">
-    <div class="container mx-auto bg-white md:w-1/2 xl:w-2/6 p-7 rounded-lg md:mt-12 xs:mt-6">
-        <h3 class="font-semibold text-3xl mt-2 mb-4">Sign Up</h3>
-        <form id="form-signup">
-            <input type="text" id="signup-name" class="bg-gray-200 p-3 my-2 w-full rounded-md" placeholder="Name" autocomplete="off">
-            <input type="email" id="signup-email" class="bg-gray-200 p-3 my-2 w-full rounded-md"
-                placeholder="Email" autocomplete="off">
-            <input type="password" id="signup-password" class="bg-gray-200 p-3 my-2 w-full rounded-md"
-                placeholder="Password">
-            <button type="submit" class="w-full bg-black text-white my-2 p-3 rounded-md md:text-xl xs:text-base">Sign Up</button>
-            <button id="signup-google"
-                class="w-full bg-red-500 text-white my-2 p-3 rounded-md md:text-xl xs:text-base">Google</button>
-        </form>
+    <div class="flex justify-center items-center min-h-75">
+        <div class="container mx-auto flex justify-center items-center">
+            <div>
+                <h1 class="text-7xl font-medium leading-tight">Dale sentido<br> a la rutina</h1>
+                <p class="text-3xl my-2 leading-relaxed">Organiza tu día,<br> finanazas y objetivos.</p>
+            </div>
+        </div>
+        <div class="container mx-auto flex justify-center items-center">
+            <div class="bg-white w-2/3">
+                <h3 class="font-medium text-6xl mt-2 mb-4">Sign Up</h3>
+                <form id="form-signup">
+                    <input type="text" id="signup-name" class="bg-gray-200 text-xl p-4 my-2 w-full rounded-2xl outline-none"
+                        placeholder="Name" autocomplete="off" required="required">
+                    <input type="email" id="signup-email" class="bg-gray-200 text-xl p-4 my-2 w-full rounded-2xl outline-none"
+                        placeholder="Email" autocomplete="off" required="required">
+                    <input type="password" id="signup-password" class="bg-gray-200 text-xl p-4 my-2 w-full rounded-2xl outline-none"
+                        placeholder="Password" autocomplete="off" required="required">
+                    <button type="submit"
+                        class="w-full bg-black text-white my-2 p-4 rounded-2xl md:text-2xl xs:text-base outline-none">Sign Up</button>
+                    <button id="signup-google"
+                    class="flex justify-center items-center w-full border-2 border-gray-200 text-gray-800 my-2 p-3 rounded-2xl md:text-2xl xs:text-base outline-none"><img class="w-5 mx-2" src="../resources/search.svg" alt="google"> Google</button>
+                </form>
+            </div>
+        </div>
+
     </div>
+
 </div>
 
 <!-- container notification modal -->

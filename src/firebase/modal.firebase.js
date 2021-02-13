@@ -6,9 +6,6 @@ export default class Modal {
         
     }
 
-
-
-
     successModalTemplate(message) {
         return `
         <div class="bg-green-50 rounded-lg p-5 my-2 shadow"">

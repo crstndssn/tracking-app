@@ -18,7 +18,13 @@ export default () => {
         const password = loginForm['login-password'].value;
         console.log(email, password, modalContainer)
         auth.authEmailPassword(email, password, modalContainer);
-        window.location.href = '#/tasks';
+        // window.location.href = '#/tasks';
+
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                window.location.href = '#/tasks';
+            }
+        })
        
         console.log(viewTasks)
 
@@ -27,7 +33,7 @@ export default () => {
         modalContainerTasks.querySelector('.modal-container')
         console.log(modalContainerTasks)
 
-        let messageWecome = 'Welcome'
+        // let messageWecome = 'Welcome'
 
         console.log(Modal.successModal())
 

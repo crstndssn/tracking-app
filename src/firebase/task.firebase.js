@@ -84,8 +84,10 @@ export default class Task {
 
     getTasksTemplate(task, id) {
         return `
-             <div class="border flex justify-between items-center rounded-lg p-3 my-2">
-             <p class="text-md text-gray-800 font-medium">${task}</p>
+             <div class="border border-gray-100 flex justify-between items-center rounded-2xl p-3 my-2 shadow">
+                <div class="flex justify-center items-center">
+                    <p class="text-md text-gray-800 font-base">${task}</p>
+                </div>
                  <div class="flex">
                     <p data-id="${id}" class="done-task bg-green-500 py-1 px-2 mx-1 text-white rounded-full text-sm cursor-pointer">done</p>
                     <p data-id="${id}" class="delete-task bg-red-500 py-1 px-2 text-white rounded-full text-sm cursor-pointer">delete</p>
