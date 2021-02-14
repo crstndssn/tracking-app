@@ -3,7 +3,7 @@ import Login from './login.controller';
 import Signup from './signup.controller';
 import Tasks from './tasks.controller';
 import Money from './money.controller';
-import Goals from './goals.controller';
+import Notes from './notes.controller';
 import Posts from './post.controller';
 import notFound from './404.controller';
 
@@ -13,7 +13,7 @@ const pages = {
     signup: Signup,
     tasks: Tasks,
     money: Money,
-    goals: Goals,
+    notes: Notes,
     posts: Posts,
     notFound: notFound
 }

@@ -2,15 +2,17 @@ export default class Modal {
 
 
     successModal(message, modalContainer) {
-        modalContainer.innerHTML = '';
         let modal = this.successModalTemplate(message)
         modalContainer.innerHTML += modal;
+        setTimeout(() => {
+            modalContainer.innerHTML = ''; 
+        }, 4000)
     }
 
     successModalTemplate(message) {
         return `
-        <div class="bg-green-50 rounded-lg p-5 my-2 shadow"">
-            <p class="max-w-64 text-green-600">
+        <div class="bg-green-600 rounded-lg p-5 my-2 shadow"">
+            <p class="max-w-64 text-white">
                 ${message}
             </p>
         </div>
@@ -27,8 +29,8 @@ export default class Modal {
 
     errorModalTemplate(message) {
         return `
-        <div class="bg-red-50 rounded-lg p-5 my-2 shadow">
-            <p class="text-red-600">
+        <div class="bg-red-600 rounded-lg p-5 my-2 shadow">
+            <p class="text-white">
                 ${message}
             </p>
         </div>

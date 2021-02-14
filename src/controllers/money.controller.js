@@ -1,7 +1,9 @@
 import view from '../views/money.html'
 import Modal from '../firebase/modal.firebase';
+import Money from '../firebase/money.firebase'
 
 const modal = new Modal();
+const money = new Money();
 
 export default () => {
 
@@ -11,37 +13,39 @@ export default () => {
     // modal notificación
     const modalContainer = divElement.querySelector('.modal-container')
 
+    // input expense
     const expenseInput = divElement.querySelector('#input-expense');
 
-
     expenseInput.addEventListener('keyup', function(e) {
-
-            
-        
-            // var formatted = (this.value * 1).toLocaleString('es-US', { style: 'currency', currency: 'USD' }).format(expenseInput.value);
-            // console.log(formatted)
-            // expenseInput.value = formatted
-
-            let numberFormat = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(expenseInput.value)
-            expenseInput.value = numberFormat
-            console.log();
-
         if (e.keyCode === 13) {
             e.preventDefault();
-            
-
-            
+            expenseInput.value = '';
             const expense = expenseInput.value;
-
-
-            console.log(expense )
-            // if (expense == '') {
-            //     modal.errorModal('Enter a valid value', modalContainer)
-            // } else {
-                
-            // }
+            if (expense == '') {
+                modal.errorModal('Enter a valid value', modalContainer)
+            } else {
+                firebase.auth().onAuthStateChanged((user) => {
+                    money.createExpense(user.uid, expense)
+                })
+                modal.successModal('Expense created', modalContainer)
+            }
         }
     }, false)
+
+
+    // get expenses
+    const expensesContainer = divElement.querySelector('#expense-container')
+
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            console.log(expensesContainer)
+            money.getExpenses(expensesContainer, user.uid);
+        } else {
+            modal.errorModal('No cargan tus gastos :(')
+        }
+    })
+
+    
 
     return divElement;
 }
