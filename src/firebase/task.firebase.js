@@ -13,7 +13,7 @@ export default class Task {
                 console.log(`Id task => ${refDoc.id}`);
             })
             .catch(error => {
-                console.log(`Error creando po sts ${error.message}`);
+                console.log(`Error creando tasks ${error.message}`);
             })
     }
 
