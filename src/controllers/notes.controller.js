@@ -16,6 +16,9 @@ export default () => {
 
     containerNote.innerHTML = allNoteView;
 
+
+    // CONFIG TO NAVIGATION
+
     // All Notes
     const allNoteBtn = divElement.querySelector('#all-note');
     allNoteBtn.addEventListener('click', (e) => {
@@ -33,6 +36,11 @@ export default () => {
         navigationAll.style.display = 'none';
         navigationNote.style.display = 'flex';
     })
+
+    // Create note to firebase
+    const formNote = divElement.querySelector('#form-note');
+    console.log(divElement)
+
 
 
     return divElement;
