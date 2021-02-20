@@ -1,4 +1,5 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const publicPath = '';
 
@@ -23,7 +24,7 @@ module.exports = {
                 loader: 'html-loader'
             },
             {
-                test: /\.(png|jpe?g|gif|svg)$/,
+                test: /\.(png|jpe?g|gif|svg|ico)$/,
                 loader: 'file-loader',
             }
         ]
@@ -31,6 +32,7 @@ module.exports = {
     plugins: [
         new HTMLWebpackPlugin({
             template: './src/index.html'
-        })
+        }),
+        new FaviconsWebpackPlugin('./src/resources/favicon.ico')
     ]
 }
